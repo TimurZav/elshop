@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Каталог продукции</title>
+    <meta name="description"
+          content="Большой ассортимент электроники, цифровой и бытовой техники, а также для дома, известных брендов в интернет магазине DNS по отличным ценам">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    {% load static %}
+    <script src="{% static 'catalog/js/bootstrap.min.js' %}"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'catalog/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static '/catalog/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid p-0">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a  href="/home/">home</a></li>
+                                        <li><a class="active" href="Menu.html">Menu</a></li>
+                                        <li><a href="/about/">About</a></li>
+                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="blog.html">blog</a></li>
+                                                <li><a href="single-blog.html">single-blog</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Pages <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="elements.html">elements</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/contacts/">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 d-none d-lg-block">
+                            <div class="book_room">
+                                <div class="socail_links">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="book_btn d-none d-xl-block">
+                                    <a class="#" href="#">+10 367 453 7382</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <video playsinline autoplay muted loop>
+        <source src="{% static '/catalog/video/hd0181.mov' %}" type="video/mp4">
+    </video>
+
+<div class="content">
+    {% if categories %}
+    <div class="card-group">
+    {% for category in categories %}
+        <a href="{% url 'products' category.slug %}" class="card m-3" style="max-width: 540px;">
+          <div class="row g-0">
+
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ category }}</h5>
+                    <p class="card-text">
+                       {{ category.description }}
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+
+              <div class="col-md-4">
+                  <img src="{{ category.image.url }}" class="img-fluid rounded-start" alt="">
+              </div>
+          </div>
+        </a>
+    {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
